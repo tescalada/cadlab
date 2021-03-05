@@ -1,0 +1,10 @@
+*.stl
+*.obj
+.ipython
+.cache
+__pycache__
+.config
+examples
+.ipynb_checkpoints
+*.3mf
+*.sh

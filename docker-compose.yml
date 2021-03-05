@@ -1,0 +1,10 @@
+version: '2'
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    env_file: .env
+    volumes:
+      - .:/opt/webapp
+    command: bash -l -c ". /opt/conda/bin/activate cq && gunicorn --reload --reload-extra-file /opt/webapp/templates/cadview.html --reload-extra-file /opt/webapp/templates/index.html --reload-extra-file /opt/webapp/templates/base.html --bind 0.0.0.0:$PORT app:app --log-file - "
