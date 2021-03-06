@@ -26,15 +26,8 @@ def get_form(assembly):
 
 def get_assembly_fn(assembly):
     module = importlib.import_module(f"assemblies.{assembly}")
+    #cache.memoize.memoize(module.make)
     return module.make
-
-
-# this is a workaround for an issue with pulling v2.0.0 from unpkg.com
-@app.route("/<assembly>/<model>/jupyter_cadquery.js")
-@app.route("/<model>/jupyter_cadquery.js")
-@app.route("/jupyter_cadquery.js")
-def jc(assembly=None, model=None):
-    return send_from_directory("static", "jupyter_cadquery.js", as_attachment=False)
 
 
 @app.route("/")
