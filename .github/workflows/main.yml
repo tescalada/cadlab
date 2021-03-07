@@ -2,7 +2,7 @@
 
 name: CI
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
@@ -32,8 +32,8 @@ jobs:
         uses: grantmcconnaughey/lintly-flake8-github-action@v1.0
         with:
           # The GitHub API token to use for creating PR reviews
-          token: 
+          token: ${{ secrets.GITHUB_TOKEN }}
           # Fail if *any* violations are detected or only *new* ones (valid values are "new" or "any")
-          failIf: # optional, default is new
+          failIf: any
           # Args to pass to the flake8 executable
-          args: # optional, default is .
+          args: "--max-line-length=100 ."
