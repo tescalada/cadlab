@@ -36,4 +36,4 @@ jobs:
           # Fail if *any* violations are detected or only *new* ones (valid values are "new" or "any")
           failIf: any
           # Args to pass to the flake8 executable
-          args: "--max-line-length=100 ."
+          args: "--ignore=E722 --max-line-length=100 ."

@@ -1,5 +1,5 @@
 from flask import Flask, request, send_from_directory, render_template
-#from flask_caching import Cache
+# from flask_caching import Cache
 
 import cadquery as cq
 import logging
@@ -32,7 +32,7 @@ app = Flask(__name__)
 logging.basicConfig(level=logging.DEBUG)
 app.config.from_object(Config())
 app.logger.setLevel(logging.DEBUG)
-#cache = Cache(app)
+# cache = Cache(app)
 
 ASSEMBLIES = [Path(os.path.basename(f)).stem for f in glob.glob("assemblies/*.py")]
 
