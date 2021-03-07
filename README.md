@@ -6,7 +6,7 @@ To use this repo, you just need to add a dockerfile to your folder containing yo
 
 Dockerfile
 ```
-FROM tescalada/cadlab
+FROM docker.pkg.github.com/tescalada/cadlab/cadlab:latest
 
 # add your assemblies into the assemblies folder
 ADD . /opt/webapp/assemblies/
