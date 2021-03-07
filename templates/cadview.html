@@ -2,8 +2,8 @@
 
 {% block content %}
 <div class="container">
-  <h1 class="h2">{{ assembly }}</h1>
-  <div class="row">
+  <h1 class="h1">{{ assembly }}</h1>
+  <div class="row g-2">
     <div class="col">
       <div>
         <div class="card">
@@ -92,19 +92,19 @@
       </div>
     </div>
   </div>
-</div>
 
-<div class="row">
-  <div class="col">
-    <div class="card">
-      {% for widget_view in widget_views %}
-      <div id="widget-{{ loop.index }}">
-        <!-- This script tag will be replaced by the view's DOM tree -->
-        <script type="application/vnd.jupyter.widget-view+json">
-          {{widget_view|tojson}}
-        </script>
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        {% for widget_view in widget_views %}
+        <div id="widget-{{ loop.index }}">
+          <!-- This script tag will be replaced by the view's DOM tree -->
+          <script type="application/vnd.jupyter.widget-view+json">
+            {{widget_view|tojson}}
+          </script>
+        </div>
+        {% endfor %}
       </div>
-      {% endfor %}
     </div>
   </div>
 </div>
