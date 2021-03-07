@@ -133,14 +133,14 @@ def make_tape_cutter(tape_od, tape_id, tape_width, cutter_width=5, cutter_thickn
     body = (
         body
         .faces(">X")
-        .workplane(-holder_thickness*2)
+        .workplane(-holder_thickness * 2)
         .polarArray(
             radius=(tape_expanded_outer_d / 2) + holder_thickness / 2,
             startAngle=-(body_angle * 1.5) / 2,
             angle=body_angle * 1.5,
             count=3,
         )
-        .rect(nut_d, nut_h*10)
+        .rect(nut_d, nut_h * 10)
         .cutBlind(-nut_h)
     )
 
@@ -160,14 +160,14 @@ def make_tape_cutter(tape_od, tape_id, tape_width, cutter_width=5, cutter_thickn
     body = (
         body
         .faces(">X")
-        .workplane(-holder_thickness*2)
+        .workplane(-holder_thickness * 2)
         .polarArray(
             radius=(tape_expanded_inner_d / 2) - holder_thickness / 2,
             startAngle=-body_angle / 2,
             angle=body_angle,
             count=2,
         )
-        .rect(nut_d, nut_h*10)
+        .rect(nut_d, nut_h * 10)
         .cutBlind(-nut_h)
     )
 
