@@ -220,16 +220,25 @@ class Form(FlaskForm):
         description="The outer diameter of the tape roll in mm",
         validators=[DataRequired()],
         default=115,
+        render_kw={
+            'units':'mm',
+        },
     )
     tape_id = FloatField(
         'Inner Diameter',
         description="The inner diameter of the tape roll in mm",
         validators=[DataRequired()],
         default=75,
+        render_kw={
+            'units':'mm',
+        },
     )
     tape_width = FloatField(
         'Width',
         description="The width of the tape roll in mm",
         validators=[DataRequired()],
         default=49,
+        render_kw={
+            'units':'mm',
+        },
     )

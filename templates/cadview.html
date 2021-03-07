@@ -23,8 +23,11 @@
                 <div class="input-group mb-3">
                   <input type="number" class="form-control" id="{{field.id}}" name="{{field.name}}"
                     value="{{field._value()}}"
-                    aria-describedby="{%- if field.errors or field.description %}{{field.id}}_help{%- endif %} {{field.id}}_units">
-                  <span class="input-group-text" id="{{field.id}}_units">mm</span>
+                    step="0.0001"
+                    aria-describedby="{%- if field.errors or field.description %}{{field.id}}_help{%- endif %} {%- if field.render_kw.units %}{{field.id}}_units{%- endif %}">
+                  {% if field.render_kw.units %}
+                  <span class="input-group-text" id="{{field.id}}_units">{{field.render_kw.units|safe}}</span>
+                  {% endif %}
                 </div>
                 {%- if field.errors %}
                 {%- for error in field.errors %}
