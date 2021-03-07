@@ -60,21 +60,21 @@ def make_tape_cutter(tape_od, tape_id, tape_width, cutter_width=5, cutter_thickn
 
     tape = (
         cq.Workplane("left")
-        .circle(tape_outer_d/2)
-        .extrude(tape_width/2, both=True)
-        .circle(tape_inner_d/2)
+        .circle(tape_outer_d / 2)
+        .extrude(tape_width / 2, both=True)
+        .circle(tape_inner_d / 2)
         .cutThruAll()
     )
 
     tape_expanded = (
         cq.Workplane("left")
-        .circle(tape_expanded_outer_d/2)
+        .circle(tape_expanded_outer_d / 2)
         .extrude(tape_expanded_width / 2, both=True)
-        .circle(tape_expanded_inner_d/2)
+        .circle(tape_expanded_inner_d / 2)
         .cutThruAll()
     )
 
-    cutter_offset_z = tape_expanded_outer_d/2 + (holder_thickness / 4)
+    cutter_offset_z = tape_expanded_outer_d / 2 + (holder_thickness / 4)
     cutter_offset_y = -holder_thickness + 0.5
 
     body_angle = 30
@@ -82,7 +82,7 @@ def make_tape_cutter(tape_od, tape_id, tape_width, cutter_width=5, cutter_thickn
     cutter = (
         cq.Workplane("left")
         .box(cutter_thickness, cutter_width, tape_expanded_width)
-        .translate((0, cutter_offset_y,  cutter_offset_z))
+        .translate((0, cutter_offset_y, cutter_offset_z))
         .rotateAboutCenter((1, 0, 0), 15)
         .rotate((0, 0, 0), (1, 0, 0), body_angle)
     )
@@ -90,16 +90,16 @@ def make_tape_cutter(tape_od, tape_id, tape_width, cutter_width=5, cutter_thickn
     cutter_hole = (
         cq.Workplane("left")
         .box(cutter_thickness_gap, cutter_width, tape_expanded_width)
-        .translate((0, cutter_offset_y,  cutter_offset_z))
+        .translate((0, cutter_offset_y, cutter_offset_z))
         .rotateAboutCenter((1, 0, 0), 15)
         .rotate((0, 0, 0), (1, 0, 0), body_angle)
     )
 
     pts = [
-        (0 + tape_expanded_inner_d/2, -tape_expanded_width/2),
-        (0 + tape_expanded_inner_d/2, tape_expanded_width/2),
-        (tape_expanded_thickness + tape_expanded_inner_d/2, tape_expanded_width/2),
-        (tape_expanded_thickness + tape_expanded_inner_d/2, -tape_expanded_width/2),
+        (0 + tape_expanded_inner_d / 2, -tape_expanded_width / 2),
+        (0 + tape_expanded_inner_d / 2, tape_expanded_width / 2),
+        (tape_expanded_thickness + tape_expanded_inner_d / 2, tape_expanded_width / 2),
+        (tape_expanded_thickness + tape_expanded_inner_d / 2, -tape_expanded_width / 2),
 
     ]
     body = cq.Workplane("ZX").polyline(pts).close().revolve(
@@ -115,14 +115,14 @@ def make_tape_cutter(tape_od, tape_id, tape_width, cutter_width=5, cutter_thickn
 
     # TODO check that holder_thickness >= screw_head_d otherwise there will be issues
 
-    tape_offset = (tape_thickness / 2) + (tape_inner_d/2)
+    tape_offset = (tape_thickness / 2) + (tape_inner_d / 2)
 
     body = (
         body
         .faces(">X")
         .workplane()
         .polarArray(
-            radius=(tape_expanded_outer_d/2) + holder_thickness/2,
+            radius=(tape_expanded_outer_d / 2) + holder_thickness / 2,
             startAngle=-(body_angle * 1.5) / 2,
             angle=body_angle * 1.5,
             count=3,
@@ -133,14 +133,14 @@ def make_tape_cutter(tape_od, tape_id, tape_width, cutter_width=5, cutter_thickn
     body = (
         body
         .faces(">X")
-        .workplane(-holder_thickness*2)
+        .workplane(-holder_thickness * 2)
         .polarArray(
-            radius=(tape_expanded_outer_d/2) + holder_thickness/2,
+            radius=(tape_expanded_outer_d / 2) + holder_thickness / 2,
             startAngle=-(body_angle * 1.5) / 2,
             angle=body_angle * 1.5,
             count=3,
         )
-        .rect(nut_d, nut_h*10)
+        .rect(nut_d, nut_h * 10)
         .cutBlind(-nut_h)
     )
 
@@ -149,7 +149,7 @@ def make_tape_cutter(tape_od, tape_id, tape_width, cutter_width=5, cutter_thickn
         .faces(">X")
         .workplane()
         .polarArray(
-            radius=(tape_expanded_inner_d/2) - holder_thickness/2,
+            radius=(tape_expanded_inner_d / 2) - holder_thickness / 2,
             startAngle=-body_angle / 2,
             angle=body_angle,
             count=2,
@@ -160,14 +160,14 @@ def make_tape_cutter(tape_od, tape_id, tape_width, cutter_width=5, cutter_thickn
     body = (
         body
         .faces(">X")
-        .workplane(-holder_thickness*2)
+        .workplane(-holder_thickness * 2)
         .polarArray(
-            radius=(tape_expanded_inner_d/2) - holder_thickness/2,
+            radius=(tape_expanded_inner_d / 2) - holder_thickness / 2,
             startAngle=-body_angle / 2,
             angle=body_angle,
             count=2,
         )
-        .rect(nut_d, nut_h*10)
+        .rect(nut_d, nut_h * 10)
         .cutBlind(-nut_h)
     )
 
