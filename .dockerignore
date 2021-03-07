@@ -8,3 +8,5 @@ examples
 .ipynb_checkpoints
 *.3mf
 *.sh
+.gitignore
+cache
