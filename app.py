@@ -42,6 +42,8 @@ def disable_prints():
     sys.stdout = open(os.devnull, 'w')
 
 # Restore
+
+
 def enable_prints():
     sys.stdout = sys.__stdout__
 
@@ -53,7 +55,7 @@ def get_form(assembly, args):
 
 
 # this doesnt actually work because it cant pickle the model
-#@cache.memoize()
+# @cache.memoize()
 def get_result(assembly, args):
     app.logger.debug(f"{assembly}, {args}")
     module = importlib.import_module(f"assemblies.{assembly}")

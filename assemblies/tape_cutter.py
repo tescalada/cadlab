@@ -221,7 +221,7 @@ class Form(FlaskForm):
         validators=[DataRequired()],
         default=115,
         render_kw={
-            'units':'mm',
+            'units': 'mm',
         },
     )
     tape_id = FloatField(
@@ -230,7 +230,7 @@ class Form(FlaskForm):
         validators=[DataRequired()],
         default=75,
         render_kw={
-            'units':'mm',
+            'units': 'mm',
         },
     )
     tape_width = FloatField(
@@ -239,6 +239,6 @@ class Form(FlaskForm):
         validators=[DataRequired()],
         default=49,
         render_kw={
-            'units':'mm',
+            'units': 'mm',
         },
     )

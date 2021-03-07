@@ -1,5 +1,6 @@
 import os
 
+
 class Config(object):
     # flask
     DEBUG = os.environ.get("DEBUG", False)
