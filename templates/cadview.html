@@ -10,6 +10,7 @@
           <div class="card-header">
             <a class="btn dropdown-toggle" data-bs-toggle="collapse" href="#collapseExample" role="button"
               aria-expanded="false" aria-controls="collapseExample">
+              <span data-feather="tool"></span>
               Parameters
             </a>
           </div>
@@ -52,19 +53,37 @@
           <div class="card-header">
             <a class="btn dropdown-toggle" data-bs-toggle="collapse" href="#collapseExample" role="button"
               aria-expanded="false" aria-controls="collapseExample">
+              <span data-feather="file"></span>
               Files
             </a>
           </div>
           <div class="card-body collapse" id="collapseExample">
-            <p><a href="{{ url_for('cad_view', assembly=assembly, **download_url_params) }}">view full assembly</a></p>
+            <p>
+              <a href="{{ url_for('cad_view', assembly=assembly, **download_url_params) }}">
+                <span data-feather="eye"></span>
+                view full assembly
+              </a>
+            </p>
             <p>Parts:</p>
             <ul class="list-group">
               {% for file in files %}
               <li class="list-group-item list-group-item-action {% if model == file %}list-group-item-info{% endif %}"
                 {% if model==file %}aria-current="true" {% endif %}>
-                {{file}} : <a
-                  href="{{ url_for('cad_view', assembly=assembly, model=file, **download_url_params) }}">view</a> : <a
-                  href="{{ url_for('stl_download', assembly=assembly, model=file, **download_url_params) }}">download</a>
+                <div class="d-flex bd-highlight">
+                  <div class="p-2 flex-grow-1 bd-highlight">{{file}}</div>
+                  <div class="p-2 bd-highlight">
+                    <a href="{{ url_for('cad_view', assembly=assembly, model=file, **download_url_params) }}">
+                      <span data-feather="eye"></span>
+                      View
+                    </a>
+                  </div>
+                  <div class="p-2 bd-highlight">
+                    <a href="{{ url_for('stl_download', assembly=assembly, model=file, **download_url_params) }}" download title="download">
+                      <span data-feather="download"></span>
+                      Download
+                    </a>
+                  </div>
+                </div>
               </li>
               {% endfor %}
             </ul>
